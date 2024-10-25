@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+    <style>
+        #imgdiv{
+            width: 500px;
+            box-shadow: 8px 8px 8px gray;
+        }
+        #imgdiv>img{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>A - Asynchronous J - Javascript A - And X - XML(AJAX)</h2>
+        <button onclick="getdata()">GET CAT IMAGE</button>
+    </div>
+    <div id="imgdiv">
+        <img src="https://media.istockphoto.com/id/1396814518/vector/image-coming-soon-no-photo-no-thumbnail-image-available-vector-illustration.jpg?s=612x612&w=0&k=20&c=hnh2OZgQGhf0b46-J2z7aHbIWwq8HNlSDaNp2wn_iko="
+            id="catimg" alt="">
+    </div>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    function getdata() {
+        $.ajax({
+            url: "https://api.thecatapi.com/v1/images/search"
+        }).done(function (response) {
+            console.log(response[0].url)
+            var imgageurl = response[0].url;
+            $('#catimg').attr('src', imgageurl)
+        });
+    }
+
+</script>
+
+</html>
